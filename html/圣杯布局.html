@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+
+        .left {
+            width: 200px;
+            background-color: aqua;
+        }
+
+        .right {
+            width: 200px;
+            background-color: burlywood;
+        }
+
+        .main {
+            background-color: chartreuse;
+        }
+
+        body {
+            margin: 0 200px;
+        }
+
+        div {
+            float: left;
+        }
+
+        .left {
+            margin-left: -100%;
+            position: relative;
+            left: -200px;
+            background-color: antiquewhite;
+        }
+
+        .right {
+            margin-right: -200px;
+            background-color: black;
+        }
+
+        .main {
+            width: 100%;
+            background-color: aqua;
+        }
+    </style>
+
+    <!-- 注意顺序 -->
+    <div class="main">Main</div>
+    <div class="left">Left</div>
+    <div class="right">Right</div>
+</body>
+
+</html>

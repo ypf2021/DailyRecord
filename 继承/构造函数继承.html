@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //构造函数继承（借助 call/apply）
+        function Parent2() {
+            this.name = 'parent2';
+        }
+
+        Parent2.prototype.getName = function () {
+            return this.name
+        }
+
+        function Child2() {
+            Parent2.call(this);//这里可以给父传值
+            this.type = 'child2';
+        }
+        let child = new Child2()
+        console.log(child)  //ok
+        console.log(child.getName)  //undefined
+
+        //拿不到父中的构造函数
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        class Person {
+            name = 'person';
+            #value = '111'
+
+            //静态方法属性不会被继承
+            static sex = '未知'
+            constructor(age) {
+                this.age = age;
+            }
+        }
+
+        class Ypf extends Person {
+            constructor(age) {
+                super(age)
+            }
+        }
+
+        var ypf = new Ypf(11)
+
+        console.log('Ypf', Ypf)
+        console.log('Person', Person)
+        console.log('ypf', ypf)
+
+
+
+
+    </script>
+</body>
+
+</html>

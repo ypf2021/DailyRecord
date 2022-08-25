@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const a = [1, 2, 3];
+        const b = [1, 5, 6];
+        // const c = a.concat(b);//[1,2,3,1,5,6]    习惯的写法
+
+        const obj1 = {
+            a: 1,
+        }
+        const obj2 = {
+            b: 1,
+        }
+        // const obj = Object.assign({}, obj1, obj2);//{a:1,b:1}    //习惯的写法
+
+        //ES6中的扩展运算符 + set 去重
+        const c = [...new Set([...a, ...b])]
+        console.log(c)
+
+        //扩展运算符
+        const obj = { ...obj1, ...obj2 }
+        console.log(obj)
+    </script>
+</body>
+
+</html>

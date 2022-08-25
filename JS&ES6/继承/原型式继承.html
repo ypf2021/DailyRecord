@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let parent4 = {
+            name: "parent4",
+            friends: ["p1", "p2", "p3"],
+            getName: function () {
+                return this.name;
+            }
+        };
+
+        //Object.create()方法创建一个新对象，使用现有的对象来提供新创建的对象的 prototype。
+        let person4 = Object.create(parent4);
+
+        // console.log(person4)
+        person4.name = 'Tom';
+        person4.friends.push('jerry')
+
+        let person5 = Object.create(parent4);
+        person5.friends.push("lucy");
+
+        console.log(person4.friends); // ["p1", "p2", "p3",'jerry','lucy']
+        console.log(person5.friends); // ["p1", "p2", "p3",'jerry','lucy']
+
+        //这种继承方式弊端是拷贝对象引用，这种可能会导致对象被修改。
+
+    </script>
+</body>
+
+</html>

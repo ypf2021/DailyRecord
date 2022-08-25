@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        class Ypf {
+            //在最外层(类的顶部)定义的属性，相当于在constructor中定义的this.sex
+            //属性是实例对象自身的属性，而不是定义在实例对象的原型上面。
+            sex = '男'
+            constructor() {
+                //直接被绑定到this中的属性，不在实例的原型中
+                this.name = 'ypf';
+                this.age = 18
+            }
+
+            //这样定义的方法都在实例原型中
+            say() {
+                console.log(`${this.name} is ${this.age} `)
+            }
+        }
+        console.log(Ypf)
+
+        var ypf = new Ypf()
+        console.log(ypf)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        let p = new Promise((resolve, reject) => {
+            //1.创建对象
+            const xhr = new XMLHttpRequest();
+            //2.初始化
+            xhr.open('GET', '请求地址');
+            //3.发送
+            xhr.sned();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        resolve(xhr.response)
+                    } else {
+                        reject(xhr.status)
+                    }
+                }
+            }
+        })
+
+        p.then(value => {
+            console.log("这里是请求成功后调用得内容,请求内容:", value);
+        }, reason => {
+            console.log("这里是请求失败后调用得内容，错误状态码:", reason);
+        })
+    </script>
+</body>
+
+</html>

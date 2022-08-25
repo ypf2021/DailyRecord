@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const deps = {
+            '采购部': [1, 2, 3],
+            '人事部': [5, 8, 12],
+            '行政部': [5, 14, 79],
+            '运输部': [3, 64, 105],
+        }
+
+        //平常写法： 吧对象中的值都组合起来
+        // let member = [];
+        // for (let item in deps) {
+        //     const value = deps[item];
+        //     if (Array.isArray(value)) {
+        //         member = [...member, ...value]
+        //     }
+        // }
+        // member = [...new Set(member)]
+
+        //Es6中的 flat()将多维数组拉平变成一维数组 参数为想要拉平的维数，flat()的参数为2，表示要拉平两层的嵌套数组。如果不管有多少层嵌套，都要转成一维数组，可以用Infinity关键字作为参数。
+        let menber = Object.values(deps).flat(Infinity)    //把对象的值全取出来构成一个多维数组
+
+        console.log(menber)
+    </script>
+
+</body>
+
+</html>

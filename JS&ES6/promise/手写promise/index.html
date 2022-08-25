@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- <script src="index.js"></script> -->
+    <script type="module">
+        import MyPromise from './手写dya2.js'
+        let p = new MyPromise((resolve, reject) => {
+            // resolve(11)
+            // reject('error')
+            // throw 'err'
+
+            setTimeout(() => {
+                // console.log(111)
+                // resolve(11)
+                reject('error')
+
+            }, 1000);
+        })
+
+
+        let x = p.then(value => {
+            console.log(value)
+        }, reason => {
+            // console.warn(reason)
+            return new MyPromise((resolve, reject) => {
+                // reject('err')
+                throw 'errrrr'
+            })
+
+        })
+
+        console.log(x)
+
+
+
+    </script>
+
+</body>
+
+</html>

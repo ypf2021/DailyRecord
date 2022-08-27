@@ -9,7 +9,32 @@
 </head>
 
 <body>
-    hello
+
+    <script>
+        // console.log(Array.prototype);
+        // console.log([1, 2, 3].__proto__)
+        // // console.log([1, 2, 3].prototype)    //undefined
+        // console.log([1, 2, 3].__proto__.constructor)    //function Array()
+
+        class Person {
+            constructor() {
+                this.name = '111'
+            }
+        }
+
+        var person = new Person()
+        console.log(Person.prototype)
+        console.log(person)
+
+        console.log(Object.prototype.constructor)
+
+        console.log(Object.prototype === Person.prototype.__proto__)    //true
+
+        console.log(Object.prototype.__proto__); //null
+
+
+
+    </script>
 
 </body>
 

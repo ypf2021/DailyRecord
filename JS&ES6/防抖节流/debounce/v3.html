@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>debounce</title>
+    <style>
+        #wrapper {
+            width: 100%;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            color: #fff;
+            background-color: #444;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    防抖的原理就是：你尽管触发事件，但是我一定在事件触发n秒无操作后才执行
+    解决的this指向问题，我们的函数仍然不够“完美”，JavaScript中，事件处理函数会提供event对象，我们简称为e。
+    <div id="wrapper"></div>
+
+    <script>
+        count = 1
+        var oDiv = document.querySelector('#wrapper')
+        console.log(oDiv);
+
+        function getUserAction(e) {
+            oDiv.innerHTML = count++;
+            console.log(this)
+            console.log(e)
+        }
+
+        function debounce(func, waitTime) {
+            var timer;
+            return function () {
+                let _this = this
+                let arg = arguments
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    func.apply(_this, arg)
+                }, waitTime)
+            }
+        }
+
+
+        oDiv.onmousemove = debounce(getUserAction, 1000)
+    </script>
+</body>
+
+</html>

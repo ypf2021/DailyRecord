@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>debounce</title>
+    <style>
+        #wrapper {
+            width: 100%;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            color: #fff;
+            background-color: #444;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    防抖的原理就是：你尽管触发事件，但是我一定在事件触发完n秒无操作后才执行
+    <div id="wrapper"></div>
+
+    <script>
+        count = 1
+        var oDiv = document.querySelector('#wrapper')
+        console.log(oDiv);
+
+        function getUserAction() {
+            oDiv.innerHTML = count++;
+        }
+
+        function debounce(func, waitTime) {
+            var timer;
+            return function () {
+                console.log(arguments)
+                clearTimeout(timer);
+                timer = setTimeout(func, waitTime)
+            }
+        }
+
+
+        oDiv.onmousemove = debounce(getUserAction, 100)
+    </script>
+</body>
+
+</html>

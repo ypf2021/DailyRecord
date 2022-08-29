@@ -1,0 +1,36 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>debounce</title>
+    <style>
+        #wrapper {
+            width: 100%;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            color: #fff;
+            background-color: #444;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper"></div>
+    <script>
+        var count = 1;
+        var oDiv = document.getElementById("wrapper");
+
+        function getUserAction(e) {
+            // oDiv.innerHTML = count++
+            console.log(e);
+        }
+
+        oDiv.onmousemove = getUserAction;
+    </script>
+</body>
+
+</html>

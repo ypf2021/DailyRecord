@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrapper {
+            width: 100%;
+            height: 140px;
+
+            background: rgba(0, 0, 0, 0.8);
+
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+            line-height: 140px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper"></div>
+
+    <script>
+        var count = 1;
+        function moveAction() {
+            oWrapper.innerHTML = count++;
+        }
+
+        var oWrapper = document.querySelector('#wrapper');
+        oWrapper.onmousemove = throttle(moveAction, 1000);
+
+        function throttle(func, wait) {
+            var _this, arg;
+            var timer; // 初始化
+            return function () {
+                _this = this; // 记录this
+                arg = arguments; // 记录参数数组
+                if (timer) return; // 时候未到
+                timer = setTimeout(() => {
+                    func.apply(_this, arg); // 允许传入参数，并修正this
+                    timer = null;
+                }, wait);
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

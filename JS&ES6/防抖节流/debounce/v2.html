@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>debounce</title>
+    <style>
+        #wrapper {
+            width: 100%;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            color: #fff;
+            background-color: #444;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    防抖的原理就是：你尽管触发事件，但是我一定在事件触发n秒无操作后才执行
+    大家都知道，dom节点在触发事件的时候，this指向它本身，本例中则指向oDiv，但是在上例中：指向了window
+    毕竟经过了一层匿名函数的包裹，this已经指向了window，为了减少影响，我们尝试修正它
+    <div id="wrapper"></div>
+
+    <script>
+        count = 1
+        var oDiv = document.querySelector('#wrapper')
+        console.log(oDiv);
+
+        function getUserAction() {
+            oDiv.innerHTML = count++;
+            console.log(this)
+        }
+
+        function debounce(func, waitTime) {
+            var timer;
+            return function () {
+                let _this = this
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    func.call(_this)
+                }, waitTime)
+            }
+        }
+
+
+        oDiv.onmousemove = debounce(getUserAction, 100)
+    </script>
+</body>
+
+</html>

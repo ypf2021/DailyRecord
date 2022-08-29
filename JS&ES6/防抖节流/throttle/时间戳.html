@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrapper {
+            width: 100%;
+            height: 140px;
+
+            background: rgba(0, 0, 0, 0.8);
+
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+            line-height: 140px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper"></div>
+
+    <script>
+        var count = 1;
+        function moveAction() {
+            oWrapper.innerHTML = count++;
+        }
+
+        var oWrapper = document.querySelector('#wrapper');
+        oWrapper.onmousemove = throttle(moveAction, 1000);
+
+        function throttle(func, wait) {
+            var _this, arg;
+            var prev = 0; // 上一次触发的时间，第一次默认为0
+            console.log(prev)   //执行了一次就被销毁了
+            return function () {
+                var now = Date.now(); // 触发时的时间
+                _this = this;
+                if (now - prev > wait) {
+                    func.apply(_this, arg); // 允许传入参数，并修正this
+                    prev = now; // 更新上一次触发的时间
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>

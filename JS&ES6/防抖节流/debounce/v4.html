@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>debounce</title>
+    <style>
+        #wrapper {
+            width: 100%;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            color: #fff;
+            background-color: #444;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    防抖的原理就是：你尽管触发事件，但是我一定在事件触发完n秒无操作后才执行
+    <br>
+    immediate ： 我立即触发事件，但在n秒不动后才能接着触发下一次事件
+    <div id="wrapper"></div>
+
+    <script>
+        count = 1
+        var oDiv = document.querySelector('#wrapper')
+        console.log(oDiv);
+
+        function getUserAction(e) {
+            oDiv.innerHTML = count++;
+            console.log(this)
+            console.log(e)
+        }
+
+        function debounce(func, wait, immediate) {
+            var timer;
+
+            return function () {
+                var _this = this;
+                var args = arguments;
+                if (timer) clearTimeout(timer); // 常规流程，间隔内触发时清掉重置定时 不会把timer删掉
+                console.log(timer)
+
+                if (immediate) {
+                    // 如果已经执行过，不再执行
+                    var callNow = !timer; // 1. callNow 初始值是 true, 同步立即执行；随后 timer 才开始执行
+                    timer = setTimeout(function () {
+                        timer = null; // wait 期间，timer 是一个 ID 数字，所以 callNow 为 false，func 在此期间永远不会执行
+                    }, wait) // wait 之后，timer 赋值 null，callNow 为 true，func 又开始立即执行。
+                    if (callNow) func.apply(_this, args)
+                }
+                else {
+                    timer = setTimeout(function () {
+                        func.apply(_this, args)
+                    }, wait);
+                }
+            }
+        }
+
+
+
+        oDiv.onmousemove = debounce(getUserAction, 1000, true)
+    </script>
+</body>
+
+</html>

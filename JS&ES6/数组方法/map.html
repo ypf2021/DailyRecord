@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        const users = [
+            { name: 'John', age: 34 },
+            { name: 'Amy', age: 20 },
+            { name: 'camperCat', age: 10 }
+        ]
+
+        Array.prototype.MyMap = function (callbackFn) {
+            if (this === null || this === undefined) {
+                throw new TypeError("Cannot read property 'myForEach' of null");
+            }
+
+            if (Object.prototype.toString.call(callbackFn) !== '[object Function]') {
+                throw new TypeError(callbackFn + ' is not a function')
+            }
+
+            let _arr = this;
+            let args = arguments[1] || window;
+            var res = [];
+            for (let i = 0; i < _arr.length; i++) {
+                res.push(callbackFn.call(args, _arr[i], i, _arr))
+            }
+            return res
+        }
+
+        names = [];
+        names = users.MyMap(function (user) {
+            return user.name
+        })
+
+        console.log(names)
+    </script>
+
+</body>
+
+</html>

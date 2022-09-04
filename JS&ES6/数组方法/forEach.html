@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        var arr = [1, 23, 4, 5, 6, 7]
+
+        Array.prototype.myForEach = function (callbackFn) {
+            //this：调用该方法的数组
+            if (this === null || this === undefined) {
+                throw new TypeError("Cannot read property 'myForEach' of null");
+            }
+
+            //检测回调函数是否为funtion
+            if (Object.prototype.toString.call(callbackFn) !== "[object Function]") {
+                throw new TypeError(callbackFn + ' is not a function')
+            }
+
+            //取到执行方法的数组对象和传入的this对象
+            var _arr = this;
+            var args = arguments[1] || window
+            console.log(args)
+            for (let i = 0; i < _arr.length; i++) {
+                callbackFn.call(args, _arr[i], i, _arr)
+            }
+
+        }
+
+        var person = {
+            name: 'ypf'
+        }
+
+        arr.myForEach(function (element, index) {
+            console.log(index, element)
+            console.log(this)
+        }, person)
+
+        // arr.forEach(function (element, index) {
+        //     console.log(index, element)
+        //     console.log(this)
+        // }, person)
+    </script>
+</body>
+
+</html>

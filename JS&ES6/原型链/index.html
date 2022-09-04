@@ -22,15 +22,24 @@
             }
         }
 
-        var person = new Person()
-        console.log(Person.prototype)
-        console.log(person)
+        var person = new Person()   //实例
+        // console.log(Person.prototype)
+        // console.log(person)
 
-        console.log(Object.prototype.constructor)
+        // console.log(Object.prototype.constructor)
 
-        console.log(Object.prototype === Person.prototype.__proto__)    //true
+        // console.log(Object.prototype === Person.prototype.__proto__)    //true
 
-        console.log(Object.prototype.__proto__); //null
+        // console.log(Object.prototype.__proto__); //null
+
+        // console.log(person.__proto__)
+        // console.log(Person.__proto__)
+        console.log(Object.prototype)
+        // console.log(person.__proto__);
+        // console.log(Person.prototype);
+
+        console.log(Function.prototype)
+        console.log(Function.__proto__)
 
 
 

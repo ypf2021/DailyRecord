@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        arr = [1, 2, 3, 4, 5];
+
+        Array.prototype.MyFilter = function (callbackFn) {
+            if (this === null || this === undefined) {
+                throw new TypeError("Cannot read property 'myForEach' of null");
+            }
+
+            if (Object.prototype.toString.call(callbackFn) !== '[object Function]') {
+                throw new TypeError(callbackFn + ' is not a function')
+            }
+
+            let _arr = this;
+            let args = arguments[1] || window
+            let res = [];
+            for (let i = 0; i < _arr.length; i++) {
+                if (callbackFn.call(args, _arr[i], i, _arr)) {
+                    res.push(_arr[i])
+                }
+            }
+
+            return res
+
+        }
+
+        var res = arr.MyFilter(val => val % 2 == 0)
+        console.log(res)
+    </script>
+
+</body>
+
+</html>
